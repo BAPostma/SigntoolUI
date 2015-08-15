@@ -42,6 +42,7 @@
             this.textBoxSignToolPath = new System.Windows.Forms.TextBox();
             this.checkBoxShowPwd = new System.Windows.Forms.CheckBox();
             this.groupBoxFiles = new System.Windows.Forms.GroupBox();
+            this.checkBoxSubdirectories = new System.Windows.Forms.CheckBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonAddDirectory = new System.Windows.Forms.Button();
             this.buttonAddFiles = new System.Windows.Forms.Button();
@@ -56,7 +57,7 @@
             this.menuItemSignVerbose = new System.Windows.Forms.MenuItem();
             this.menuItemSignDebug = new System.Windows.Forms.MenuItem();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
-            this.checkBoxSubdirectories = new System.Windows.Forms.CheckBox();
+            this.checkBoxAll = new System.Windows.Forms.CheckBox();
             this.groupBoxFiles.SuspendLayout();
             this.panelProgress.SuspendLayout();
             this.groupBoxDetails.SuspendLayout();
@@ -172,6 +173,7 @@
             // 
             this.groupBoxFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxFiles.Controls.Add(this.checkBoxAll);
             this.groupBoxFiles.Controls.Add(this.checkBoxSubdirectories);
             this.groupBoxFiles.Controls.Add(this.buttonClear);
             this.groupBoxFiles.Controls.Add(this.buttonAddDirectory);
@@ -183,6 +185,16 @@
             this.groupBoxFiles.TabIndex = 1;
             this.groupBoxFiles.TabStop = false;
             this.groupBoxFiles.Text = "Files";
+            // 
+            // checkBoxSubdirectories
+            // 
+            this.checkBoxSubdirectories.AutoSize = true;
+            this.checkBoxSubdirectories.Location = new System.Drawing.Point(265, 141);
+            this.checkBoxSubdirectories.Name = "checkBoxSubdirectories";
+            this.checkBoxSubdirectories.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxSubdirectories.TabIndex = 4;
+            this.checkBoxSubdirectories.Text = "Subdirectories";
+            this.checkBoxSubdirectories.UseVisualStyleBackColor = true;
             // 
             // buttonClear
             // 
@@ -331,15 +343,16 @@
             this.groupBoxDetails.TabStop = false;
             this.groupBoxDetails.Text = "Details";
             // 
-            // checkBoxSubdirectories
+            // checkBoxAll
             // 
-            this.checkBoxSubdirectories.AutoSize = true;
-            this.checkBoxSubdirectories.Location = new System.Drawing.Point(265, 141);
-            this.checkBoxSubdirectories.Name = "checkBoxSubdirectories";
-            this.checkBoxSubdirectories.Size = new System.Drawing.Size(93, 17);
-            this.checkBoxSubdirectories.TabIndex = 4;
-            this.checkBoxSubdirectories.Text = "Subdirectories";
-            this.checkBoxSubdirectories.UseVisualStyleBackColor = true;
+            this.checkBoxAll.AutoSize = true;
+            this.checkBoxAll.Location = new System.Drawing.Point(75, 141);
+            this.checkBoxAll.Name = "checkBoxAll";
+            this.checkBoxAll.Size = new System.Drawing.Size(37, 17);
+            this.checkBoxAll.TabIndex = 5;
+            this.checkBoxAll.Text = "All";
+            this.checkBoxAll.UseVisualStyleBackColor = true;
+            this.checkBoxAll.CheckedChanged += new System.EventHandler(this.checkBoxAll_CheckedChanged);
             // 
             // MainForm
             // 
@@ -397,6 +410,7 @@
         private System.Windows.Forms.MenuItem menuItemSignDebug;
         private System.Windows.Forms.GroupBox groupBoxDetails;
         private System.Windows.Forms.CheckBox checkBoxSubdirectories;
+        private System.Windows.Forms.CheckBox checkBoxAll;
     }
 }
 

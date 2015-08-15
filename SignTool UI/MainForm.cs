@@ -88,9 +88,7 @@ namespace SignToolUI
                         searchOption = SearchOption.AllDirectories;
                     var files = GetFiles(folderBrowserDialog.SelectedPath, "*.exe;*.dll;*.sys;*.ocx", searchOption);
                     foreach (string file in files)
-                    {
                         checkedListBoxFiles.Items.Add(file);
-                    }
                 }
                 catch {}
             }
@@ -149,6 +147,14 @@ namespace SignToolUI
             groupBoxDetails.Enabled = !disable;
             groupBoxFiles.Enabled = !disable;
             splitButtonSign.Enabled = !disable;
+        }
+
+        private void checkBoxAll_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = checkBoxAll.Checked;
+            int count = checkedListBoxFiles.Items.Count;
+            for (int i = 0; i < count; i++)
+                checkedListBoxFiles.SetItemChecked(i, isChecked);
         }
     }
 }
