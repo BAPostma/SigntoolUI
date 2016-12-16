@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace SignToolUI
 {
@@ -60,7 +61,7 @@ namespace SignToolUI
         private void buttonAddFiles_Click(object sender, EventArgs e)
         {
             openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "Assemblies|*.dll";
+            openFileDialog.Filter = "Executables (*.exe;*.dll;*.sys;*.ocx)|*.exe;*.dll;*.sys;*.ocx|All Files (*.*)|*.*";
             openFileDialog.FileName = string.Empty;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -71,17 +72,23 @@ namespace SignToolUI
             }
         }
 
+        private static string[] GetFiles(string sourceFolder, string filters, SearchOption searchOption)
+        {
+            return filters.Split(';').SelectMany(filter => Directory.GetFiles(sourceFolder, filter, searchOption)).ToArray();
+        }
+
         private void buttonAddDirectory_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    string[] files = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.dll", SearchOption.TopDirectoryOnly);
+                    var searchOption = SearchOption.TopDirectoryOnly;
+                    if (checkBoxSubdirectories.Checked)
+                        searchOption = SearchOption.AllDirectories;
+                    var files = GetFiles(folderBrowserDialog.SelectedPath, "*.exe;*.dll;*.sys;*.ocx", searchOption);
                     foreach (string file in files)
-                    {
                         checkedListBoxFiles.Items.Add(file);
-                    }
                 }
                 catch {}
             }
@@ -140,6 +147,14 @@ namespace SignToolUI
             groupBoxDetails.Enabled = !disable;
             groupBoxFiles.Enabled = !disable;
             splitButtonSign.Enabled = !disable;
+        }
+
+        private void checkBoxAll_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = checkBoxAll.Checked;
+            int count = checkedListBoxFiles.Items.Count;
+            for (int i = 0; i < count; i++)
+                checkedListBoxFiles.SetItemChecked(i, isChecked);
         }
     }
 }
