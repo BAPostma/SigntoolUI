@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using SignToolUI.Timestamping;
 using System.Linq;
+
 
 namespace SignToolUI
 {
@@ -10,10 +12,16 @@ namespace SignToolUI
         public MainForm()
         {
             InitializeComponent();
+            XmlConfigReader config = new XmlConfigReader();
         }
 
         private void buttonBrowseSignTool_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBoxSignToolPath.Text))
+            {
+                openFileDialog.InitialDirectory = Helpers.FindSignToolDirectory();
+            }
+            
             openFileDialog.Multiselect = false;
             openFileDialog.Filter = "Executables|*.exe";
             openFileDialog.FileName = "SignTool.exe";

@@ -38,7 +38,6 @@
             this.buttonBrowseCertificate = new System.Windows.Forms.Button();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxCertificatePath = new System.Windows.Forms.TextBox();
-            this.textBoxTimestampURL = new System.Windows.Forms.TextBox();
             this.textBoxSignToolPath = new System.Windows.Forms.TextBox();
             this.checkBoxShowPwd = new System.Windows.Forms.CheckBox();
             this.groupBoxFiles = new System.Windows.Forms.GroupBox();
@@ -58,6 +57,7 @@
             this.menuItemSignDebug = new System.Windows.Forms.MenuItem();
             this.groupBoxDetails = new System.Windows.Forms.GroupBox();
             this.checkBoxAll = new System.Windows.Forms.CheckBox();
+            this.comboBoxTimestampURL = new System.Windows.Forms.ComboBox();
             this.groupBoxFiles.SuspendLayout();
             this.panelProgress.SuspendLayout();
             this.groupBoxDetails.SuspendLayout();
@@ -139,15 +139,6 @@
             this.textBoxCertificatePath.Size = new System.Drawing.Size(342, 20);
             this.textBoxCertificatePath.TabIndex = 6;
             this.textBoxCertificatePath.Text = global::SignToolUI.Properties.Settings.Default.CertificatePath;
-            // 
-            // textBoxTimestampURL
-            // 
-            this.textBoxTimestampURL.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SignToolUI.Properties.Settings.Default, "TimestampServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxTimestampURL.Location = new System.Drawing.Point(141, 39);
-            this.textBoxTimestampURL.Name = "textBoxTimestampURL";
-            this.textBoxTimestampURL.Size = new System.Drawing.Size(342, 20);
-            this.textBoxTimestampURL.TabIndex = 4;
-            this.textBoxTimestampURL.Text = global::SignToolUI.Properties.Settings.Default.TimestampServer;
             // 
             // textBoxSignToolPath
             // 
@@ -325,10 +316,10 @@
             // 
             // groupBoxDetails
             // 
+            this.groupBoxDetails.Controls.Add(this.comboBoxTimestampURL);
             this.groupBoxDetails.Controls.Add(this.label1);
             this.groupBoxDetails.Controls.Add(this.textBoxSignToolPath);
             this.groupBoxDetails.Controls.Add(this.label2);
-            this.groupBoxDetails.Controls.Add(this.textBoxTimestampURL);
             this.groupBoxDetails.Controls.Add(this.checkBoxShowPwd);
             this.groupBoxDetails.Controls.Add(this.label3);
             this.groupBoxDetails.Controls.Add(this.buttonBrowseCertificate);
@@ -353,6 +344,16 @@
             this.checkBoxAll.Text = "All";
             this.checkBoxAll.UseVisualStyleBackColor = true;
             this.checkBoxAll.CheckedChanged += new System.EventHandler(this.checkBoxAll_CheckedChanged);
+            // 
+            // comboBoxTimestampURL
+            // 
+            this.comboBoxTimestampURL.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SignToolUI.Properties.Settings.Default, "TimestampServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBoxTimestampURL.FormattingEnabled = true;
+            this.comboBoxTimestampURL.Location = new System.Drawing.Point(141, 38);
+            this.comboBoxTimestampURL.Name = "comboBoxTimestampURL";
+            this.comboBoxTimestampURL.Size = new System.Drawing.Size(342, 21);
+            this.comboBoxTimestampURL.TabIndex = 11;
+            this.comboBoxTimestampURL.Text = global::SignToolUI.Properties.Settings.Default.TimestampServer;
             // 
             // MainForm
             // 
@@ -411,6 +412,7 @@
         private System.Windows.Forms.GroupBox groupBoxDetails;
         private System.Windows.Forms.CheckBox checkBoxSubdirectories;
         private System.Windows.Forms.CheckBox checkBoxAll;
+        private System.Windows.Forms.ComboBox comboBoxTimestampURL;
     }
 }
 
