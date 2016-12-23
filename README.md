@@ -6,6 +6,9 @@ A graphical user interface (Winforms) to easily sign Executable and DLL content 
 ## Download
 **Download the latest version here: [EasySign.zip](https://github.com/BAPostma/SigntoolUI/releases/latest)**
 
+[![Github All Releases](https://img.shields.io/github/downloads/bapostma/signtoolui/total.svg)](https://github.com/BAPostma/SigntoolUI/releases/latest) 
+[![CodePlex downloads](https://img.shields.io/badge/codeplex-286%20downloads-blue.svg)](https://easysign.codeplex.com/)
+
 ## Some questions that are frequented
 ### Where is the Signtool.exe file located?
 This depends on the version of your SDK installation.
